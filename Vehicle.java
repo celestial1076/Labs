@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+import java.util.List;
 public class Vehicle {
     private String type; // тип (автомобиль, велосипед и т.п.)
     private String color; // цвет
@@ -88,5 +90,16 @@ public class Vehicle {
                 Thread.currentThread().interrupt();
             }
         }).start();
+    }
+    public static class Main {
+        public static void main(String[] args) {
+            String[] owners = {"Иван", "Петр"};
+            Vehicle vehicle = new Vehicle("Автомобиль", "Красный", 60.0, true, "Бензиновый", 25000.0, owners);
+            vehicle.accelerate(10); // Увеличиваем скорость
+            vehicle.decelerate(5); // Уменьшаем скорость
+            double distance = vehicle.calculateDistance(2); // Расчет расстояния за 2 часа
+            System.out.println("Пройденное расстояние: " + distance + " км");
+            vehicle.gas(); // Запуск метода газ
+        }
     }
 }
