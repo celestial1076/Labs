@@ -1,0 +1,246 @@
+Index: Vehicle.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>import java.util.ArrayList;\r\nimport java.util.List;\r\npublic class Vehicle {\r\n    private String type; // тип (автомобиль, велосипед и т.п.)\r\n    private String color; // цвет\r\n    private double speed; // скорость\r\n    private boolean hasEngine; // есть ли двигатель\r\n    private String engineType; // тип двигателя (если имеется)\r\n    private double price; // цена\r\n    private String[] owners; // владельцы\r\n    // Конструктор\r\n    public Vehicle(String type, String color, double speed, boolean hasEngine, String engineType, double price, String[] owners) {\r\n        this.type = type;\r\n        this.color = color;\r\n        this.speed = speed;\r\n        this.hasEngine = hasEngine;\r\n        this.engineType = engineType;\r\n        this.price = price;\r\n        this.owners = owners;\r\n    }\r\n    // Геттеры и сеттеры\r\n    public String getType() {\r\n        return type;\r\n    }\r\n    public void setType(String type) {\r\n        this.type = type;\r\n    }\r\n    public String getColor() {\r\n        return color;\r\n    }\r\n    public void setColor(String color) {\r\n        this.color = color;\r\n    }\r\n    public double getSpeed() {\r\n        return speed;\r\n    }\r\n    public void setSpeed(double speed) {\r\n        this.speed = speed;\r\n    }\r\n    public boolean hasEngine() {\r\n        return hasEngine;\r\n    }\r\n    public void setHasEngine(boolean hasEngine) {\r\n        this.hasEngine = hasEngine;\r\n    }\r\n    public String getEngineType() {\r\n        return engineType;\r\n    }\r\n    public void setEngineType(String engineType) {\r\n        this.engineType = engineType;\r\n    }\r\n    public double getPrice() {\r\n        return price;\r\n    }\r\n    public void setPrice(double price) {\r\n        this.price = price;\r\n    }\r\n    public String[] getOwners() {\r\n        return owners;\r\n    }\r\n    public void setOwners(String[] owners) {\r\n        this.owners = owners;\r\n    }\r\n    // Метод ускорения\r\n    public void accelerate(double increment) {\r\n        this.speed += increment;\r\n        System.out.println(\"Ускорение! Новая скорость: \" + this.speed);\r\n    }\r\n    // Метод замедления\r\n    public void decelerate(double decrement) {\r\n        this.speed -= decrement;\r\n        if (this.speed < 0) {\r\n            this.speed = 0; // Скорость не может быть отрицательной\r\n        }\r\n        System.out.println(\"Замедление! Новая скорость: \" + this.speed);\r\n    }\r\n    // Метод расчета пройденного расстояния\r\n    public double calculateDistance(double time) {\r\n        return this.speed * time;\r\n    }\r\n    // Метод газ\r\n    public void gas() {\r\n        new Thread(() -> {\r\n            try {\r\n                while (true) {\r\n                    System.out.println(\"Ускорение: \" + speed + \" м/с\");\r\n                    Thread.sleep(1000); // Задержка в 1 секунду\r\n                }\r\n            } catch (InterruptedException e) {\r\n                Thread.currentThread().interrupt();\r\n            }\r\n        }).start();\r\n    }\r\n    public static class Main {\r\n        public static void main(String[] args) {\r\n            String[] owners = {\"Иван\", \"Петр\"};\r\n            Vehicle vehicle = new Vehicle(\"Автомобиль\", \"Красный\", 60.0, true, \"Бензиновый\", 25000.0, owners);\r\n            vehicle.accelerate(10); // Увеличиваем скорость\r\n            vehicle.decelerate(5); // Уменьшаем скорость\r\n            double distance = vehicle.calculateDistance(2); // Расчет расстояния за 2 часа\r\n            System.out.println(\"Пройденное расстояние: \" + distance + \" км\");\r\n            vehicle.gas(); // Запуск метода газ\r\n        }\r\n    }\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/Vehicle.java b/Vehicle.java
+--- a/Vehicle.java	(revision 09006c4f6861e378ca6370297cfeaa495fc306d1)
++++ b/Vehicle.java	(date 1727973377848)
+@@ -1,11 +1,9 @@
+-import java.util.ArrayList;
+-import java.util.List;
+ public class Vehicle {
+-    private String type; // тип (автомобиль, велосипед и т.п.)
++    private String type; // тип транспортного средства
+     private String color; // цвет
+-    private double speed; // скорость
++    private double speed; // скорость в км/ч
+     private boolean hasEngine; // есть ли двигатель
+-    private String engineType; // тип двигателя (если имеется)
++    private String engineType; // тип двигателя
+     private double price; // цена
+     private String[] owners; // владельцы
+     // Конструктор
+@@ -61,45 +59,42 @@
+     public void setOwners(String[] owners) {
+         this.owners = owners;
+     }
+-    // Метод ускорения
++    // Метод для ускорения
+     public void accelerate(double increment) {
+         this.speed += increment;
+-        System.out.println("Ускорение! Новая скорость: " + this.speed);
++        System.out.println("Ускорение. Новая скорость: " + this.speed + " км/ч");
+     }
+-    // Метод замедления
++    // Метод для замедления
+     public void decelerate(double decrement) {
+         this.speed -= decrement;
+         if (this.speed < 0) {
+-            this.speed = 0; // Скорость не может быть отрицательной
++            this.speed = 0;
+         }
+-        System.out.println("Замедление! Новая скорость: " + this.speed);
++        System.out.println("Замедление. Новая скорость: " + this.speed + " км/ч");
+     }
+-    // Метод расчета пройденного расстояния
++    // Метод для расчета пройденного расстояния
+     public double calculateDistance(double time) {
+-        return this.speed * time;
++        return speed * time; // расстояние = скорость * время
+     }
+     // Метод газ
+     public void gas() {
+         new Thread(() -> {
+             try {
+-                while (true) {
+-                    System.out.println("Ускорение: " + speed + " м/с");
+-                    Thread.sleep(1000); // Задержка в 1 секунду
++                for (int i = 0; i < 5; i++) { // Ускорение в течение 5 секунд
++                    accelerate(10); // Увеличиваем скорость на 10 км/ч каждую секунду
++                    Thread.sleep(1000); // Ждем 1 секунду
+                 }
+             } catch (InterruptedException e) {
+-                Thread.currentThread().interrupt();
++                e.printStackTrace();
+             }
+         }).start();
+     }
+-    public static class Main {
+-        public static void main(String[] args) {
+-            String[] owners = {"Иван", "Петр"};
+-            Vehicle vehicle = new Vehicle("Автомобиль", "Красный", 60.0, true, "Бензиновый", 25000.0, owners);
+-            vehicle.accelerate(10); // Увеличиваем скорость
+-            vehicle.decelerate(5); // Уменьшаем скорость
+-            double distance = vehicle.calculateDistance(2); // Расчет расстояния за 2 часа
+-            System.out.println("Пройденное расстояние: " + distance + " км");
+-            vehicle.gas(); // Запуск метода газ
+-        }
+-    }
+-}
+\ No newline at end of file
++    public static void main(String[] args) {
++        String[] owners = {"Иван", "Петр"};
++        Vehicle vehicle = new Vehicle("Автомобиль", "Красный", 60, true, "Бензиновый", 15000, owners);
++        System.out.println("Тип: " + vehicle.getType());
++        System.out.println("Цвет: " + vehicle.getColor());
++        System.out.println("Скорость: " + vehicle.getSpeed() + " км/ч");
++        vehicle.gas(); // Запуск метода газ
++    }
++}
+Index: Lab3.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>import java.util.ArrayList;\r\nimport java.util.List;\r\npublic class Lab3 {\r\n    private int health;\r\n    private String eyeColor;\r\n    private String skinColor;\r\n    private List<String> skills;\r\n    // Конструктор\r\n    public Lab3(int health, String eyeColor, String skinColor) {\r\n        this.health = health;\r\n        this.eyeColor = eyeColor;\r\n        this.skinColor = skinColor;\r\n        this.skills = new ArrayList<>();\r\n    }\r\n    // Геттеры и сеттеры\r\n    public int getHealth() {\r\n        return health;\r\n    }\r\n    public void setHealth(int health) {\r\n        this.health = health;\r\n    }\r\n    public String getEyeColor() {\r\n        return eyeColor;\r\n    }\r\n    public void setEyeColor(String eyeColor) {\r\n        this.eyeColor = eyeColor;\r\n    }\r\n    public String getSkinColor() {\r\n        return skinColor;\r\n    }\r\n    public void setSkinColor(String skinColor) {\r\n        this.skinColor = skinColor;\r\n    }\r\n    public List<String> getSkills() {\r\n        return skills;\r\n    }\r\n    // Метод для приобретения нового навыка\r\n    public void learnSkill(String skill) {\r\n        if (!skills.contains(skill)) {\r\n            skills.add(skill);\r\n            System.out.println(\"Новый навык приобретен: \" + skill);\r\n        } else {\r\n            System.out.println(\"Данный навык уже имеется: \" + skill);\r\n        }\r\n    }\r\n    // Метод для нанесения урона\r\n    public void takeDamage(int damage) {\r\n        if (damage < 0) {\r\n            System.out.println(\"Урон не может быть негативным.\");\r\n            return;\r\n        }\r\n        health -= damage;\r\n        if (health < 0) {\r\n            health = 0;\r\n        }\r\n        System.out.println(\"Персонаж получил урон: \" + damage + \". Текущее здоровье: \" + health);\r\n    }\r\n    public static void main(String[] args) {\r\n        Lab3 character = new Lab3(100, \"синие\", \"светлая\");\r\n        character.learnSkill(\"Мечник\");\r\n        character.learnSkill(\"Маг\");\r\n        character.takeDamage(30);\r\n        character.takeDamage(80);\r\n    }\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/Lab3.java b/Lab3.java
+--- a/Lab3.java	(revision 09006c4f6861e378ca6370297cfeaa495fc306d1)
++++ b/Lab3.java	(date 1727540014868)
+@@ -1,65 +1,92 @@
+-import java.util.ArrayList;
+-import java.util.List;
+ public class Lab3 {
+-    private int health;
+-    private String eyeColor;
+-    private String skinColor;
+-    private List<String> skills;
++    private String type; // тип (автомобиль, велосипед и т.п.)
++    private String color; // цвет
++    private double speed; // скорость
++    private boolean hasEngine; // есть ли двигатель
++    private String engineType; // тип двигателя (если имеется)
++    private double price; // цена
++    private String[] owners; // владельцы
+     // Конструктор
+-    public Lab3(int health, String eyeColor, String skinColor) {
+-        this.health = health;
+-        this.eyeColor = eyeColor;
+-        this.skinColor = skinColor;
+-        this.skills = new ArrayList<>();
++    public Lab3(String type, String color, double speed, boolean hasEngine, String engineType, double price, String[] owners) {
++        this.type = type;
++        this.color = color;
++        this.speed = speed;
++        this.hasEngine = hasEngine;
++        this.engineType = engineType;
++        this.price = price;
++        this.owners = owners;
+     }
+     // Геттеры и сеттеры
+-    public int getHealth() {
+-        return health;
++    public String getType() {
++        return type;
++    }
++    public void setType(String type) {
++        this.type = type;
++    }
++    public String getColor() {
++        return color;
++    }
++    public void setColor(String color) {
++        this.color = color;
++    }
++    public double getSpeed() {
++        return speed;
++    }
++    public void setSpeed(double speed) {
++        this.speed = speed;
++    }
++    public boolean hasEngine() {
++        return hasEngine;
++    }
++    public void setHasEngine(boolean hasEngine) {
++        this.hasEngine = hasEngine;
+     }
+-    public void setHealth(int health) {
+-        this.health = health;
++    public String getEngineType() {
++        return engineType;
+     }
+-    public String getEyeColor() {
+-        return eyeColor;
++    public void setEngineType(String engineType) {
++        this.engineType = engineType;
+     }
+-    public void setEyeColor(String eyeColor) {
+-        this.eyeColor = eyeColor;
++    public double getPrice() {
++        return price;
+     }
+-    public String getSkinColor() {
+-        return skinColor;
++    public void setPrice(double price) {
++        this.price = price;
+     }
+-    public void setSkinColor(String skinColor) {
+-        this.skinColor = skinColor;
++    public String[] getOwners() {
++        return owners;
+     }
+-    public List<String> getSkills() {
+-        return skills;
++    public void setOwners(String[] owners) {
++        this.owners = owners;
+     }
+-    // Метод для приобретения нового навыка
+-    public void learnSkill(String skill) {
+-        if (!skills.contains(skill)) {
+-            skills.add(skill);
+-            System.out.println("Новый навык приобретен: " + skill);
+-        } else {
+-            System.out.println("Данный навык уже имеется: " + skill);
++    // Метод ускорения
++    public void accelerate(double increment) {
++        this.speed += increment;
++        System.out.println("Ускорение! Новая скорость: " + this.speed);
++    }
++    // Метод замедления
++    public void decelerate(double decrement) {
++        this.speed -= decrement;
++        if (this.speed < 0) {
++            this.speed = 0; // Скорость не может быть отрицательной
+         }
++        System.out.println("Замедление! Новая скорость: " + this.speed);
+     }
+-    // Метод для нанесения урона
+-    public void takeDamage(int damage) {
+-        if (damage < 0) {
+-            System.out.println("Урон не может быть негативным.");
+-            return;
+-        }
+-        health -= damage;
+-        if (health < 0) {
+-            health = 0;
+-        }
+-        System.out.println("Персонаж получил урон: " + damage + ". Текущее здоровье: " + health);
+-    }
+-    public static void main(String[] args) {
+-        Lab3 character = new Lab3(100, "синие", "светлая");
+-        character.learnSkill("Мечник");
+-        character.learnSkill("Маг");
+-        character.takeDamage(30);
+-        character.takeDamage(80);
++    // Метод расчета пройденного расстояния
++    public double calculateDistance(double time) {
++        return this.speed * time;
++    }
++    // Метод газ
++    public void gas() {
++        new Thread(() -> {
++            try {
++                while (true) {
++                    System.out.println("Ускорение: " + speed + " м/с");
++                    Thread.sleep(1000); // Задержка в 1 секунду
++                }
++            } catch (InterruptedException e) {
++                Thread.currentThread().interrupt();
++            }
++        }).start();
+     }
+ }
+\ No newline at end of file
