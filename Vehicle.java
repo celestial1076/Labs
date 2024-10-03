@@ -80,27 +80,20 @@ public class Vehicle {
     }
     // Метод газ
     public void gas() {
-        new Thread(() -> {
-            try {
                 for (int i = 0; i < 5; i++) { // Ускорение в течение 5 секунд
                     accelerate(10); // Увеличиваем скорость на 10 км/ч каждую секунду
-                    Thread.sleep(1000); // Ждем 1 секунду
+                    Thread.onSpinWait(); // Ждем 1 секунду
                 }
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-        }).start();
     }
     public static void main(String[] args) {
         String[] owners = {"Иван", "Петр"};
         Vehicle vehicle = new Vehicle("Автомобиль", "Красный", 60, true, "Бензиновый", 15000, owners);
-        System.out.println("Тип: " + vehicle.getType());
-        System.out.println("Цвет: " + vehicle.getColor());
-        System.out.println("Скорость: " + vehicle.getSpeed() + " км/ч");
-        System.out.println("Владелец: " + Arrays.toString(vehicle.getOwners()));
-        System.out.println("Цена: " + vehicle.getPrice());
-        System.out.println("Тип двигателя: " + vehicle.getEngineType());
-        System.out.println("Есть двигатель: " + (hasEngine ? "Да" : "Нет"));
+        System.out.printf("Тип: " + vehicle.getType() +" Цвет: " + vehicle.getColor() + " Скорость: " + vehicle.getSpeed() + " км/ч " +
+                " Владелец: " + Arrays.toString(vehicle.getOwners()) + " Цена: " + vehicle.getPrice() +
+                " Тип двигателя: " + vehicle.getEngineType() + " Есть двигатель: " + (hasEngine ? "Да" : "Нет"));
         vehicle.gas(); // Запуск метода газ
     }
 }
+
+
+
