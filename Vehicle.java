@@ -1,3 +1,5 @@
+import java.util.Arrays;
+
 public class Vehicle {
     private String type; // тип транспортного средства
     private String color; // цвет
@@ -95,6 +97,10 @@ public class Vehicle {
         System.out.println("Тип: " + vehicle.getType());
         System.out.println("Цвет: " + vehicle.getColor());
         System.out.println("Скорость: " + vehicle.getSpeed() + " км/ч");
+        System.out.println("Владелец: " + Arrays.toString(vehicle.getOwners()));
+        System.out.println("Цена: " + vehicle.getPrice());
+        System.out.println("Тип двигателя: " + vehicle.getEngineType());
+
         vehicle.gas(); // Запуск метода газ
     }
 }
