@@ -94,6 +94,6 @@ public class Vehicle {
         vehicle.gas(); // Запуск метода газ
     }
 }
-
+// конечная
 
 
