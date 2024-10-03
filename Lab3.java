@@ -1,65 +1,92 @@
-import java.util.ArrayList;
-import java.util.List;
 public class Lab3 {
-    private int health;
-    private String eyeColor;
-    private String skinColor;
-    private List<String> skills;
+    private String type; // тип (автомобиль, велосипед и т.п.)
+    private String color; // цвет
+    private double speed; // скорость
+    private boolean hasEngine; // есть ли двигатель
+    private String engineType; // тип двигателя (если имеется)
+    private double price; // цена
+    private String[] owners; // владельцы
     // Конструктор
-    public Lab3(int health, String eyeColor, String skinColor) {
-        this.health = health;
-        this.eyeColor = eyeColor;
-        this.skinColor = skinColor;
-        this.skills = new ArrayList<>();
+    public Lab3(String type, String color, double speed, boolean hasEngine, String engineType, double price, String[] owners) {
+        this.type = type;
+        this.color = color;
+        this.speed = speed;
+        this.hasEngine = hasEngine;
+        this.engineType = engineType;
+        this.price = price;
+        this.owners = owners;
     }
     // Геттеры и сеттеры
-    public int getHealth() {
-        return health;
+    public String getType() {
+        return type;
     }
-    public void setHealth(int health) {
-        this.health = health;
+    public void setType(String type) {
+        this.type = type;
     }
-    public String getEyeColor() {
-        return eyeColor;
+    public String getColor() {
+        return color;
     }
-    public void setEyeColor(String eyeColor) {
-        this.eyeColor = eyeColor;
+    public void setColor(String color) {
+        this.color = color;
     }
-    public String getSkinColor() {
-        return skinColor;
+    public double getSpeed() {
+        return speed;
     }
-    public void setSkinColor(String skinColor) {
-        this.skinColor = skinColor;
+    public void setSpeed(double speed) {
+        this.speed = speed;
     }
-    public List<String> getSkills() {
-        return skills;
+    public boolean hasEngine() {
+        return hasEngine;
     }
-    // Метод для приобретения нового навыка
-    public void learnSkill(String skill) {
-        if (!skills.contains(skill)) {
-            skills.add(skill);
-            System.out.println("Новый навык приобретен: " + skill);
-        } else {
-            System.out.println("Данный навык уже имеется: " + skill);
+    public void setHasEngine(boolean hasEngine) {
+        this.hasEngine = hasEngine;
+    }
+    public String getEngineType() {
+        return engineType;
+    }
+    public void setEngineType(String engineType) {
+        this.engineType = engineType;
+    }
+    public double getPrice() {
+        return price;
+    }
+    public void setPrice(double price) {
+        this.price = price;
+    }
+    public String[] getOwners() {
+        return owners;
+    }
+    public void setOwners(String[] owners) {
+        this.owners = owners;
+    }
+    // Метод ускорения
+    public void accelerate(double increment) {
+        this.speed += increment;
+        System.out.println("Ускорение! Новая скорость: " + this.speed);
+    }
+    // Метод замедления
+    public void decelerate(double decrement) {
+        this.speed -= decrement;
+        if (this.speed < 0) {
+            this.speed = 0; // Скорость не может быть отрицательной
         }
+        System.out.println("Замедление! Новая скорость: " + this.speed);
     }
-    // Метод для нанесения урона
-    public void takeDamage(int damage) {
-        if (damage < 0) {
-            System.out.println("Урон не может быть негативным.");
-            return;
-        }
-        health -= damage;
-        if (health < 0) {
-            health = 0;
-        }
-        System.out.println("Персонаж получил урон: " + damage + ". Текущее здоровье: " + health);
+    // Метод расчета пройденного расстояния
+    public double calculateDistance(double time) {
+        return this.speed * time;
     }
-    public static void main(String[] args) {
-        Lab3 character = new Lab3(100, "синие", "светлая");
-        character.learnSkill("Мечник");
-        character.learnSkill("Маг");
-        character.takeDamage(30);
-        character.takeDamage(80);
+    // Метод газ
+    public void gas() {
+        new Thread(() -> {
+            try {
+                while (true) {
+                    System.out.println("Ускорение: " + speed + " м/с");
+                    Thread.sleep(1000); // Задержка в 1 секунду
+                }
+            } catch (InterruptedException e) {
+                Thread.currentThread().interrupt();
+            }
+        }).start();
     }
 }
