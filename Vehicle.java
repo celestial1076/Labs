@@ -1,11 +1,9 @@
-import java.util.ArrayList;
-import java.util.List;
 public class Vehicle {
-    private String type; // тип (автомобиль, велосипед и т.п.)
+    private String type; // тип транспортного средства
     private String color; // цвет
-    private double speed; // скорость
+    private double speed; // скорость в км/ч
     private boolean hasEngine; // есть ли двигатель
-    private String engineType; // тип двигателя (если имеется)
+    private String engineType; // тип двигателя
     private double price; // цена
     private String[] owners; // владельцы
     // Конструктор
@@ -61,45 +59,42 @@ public class Vehicle {
     public void setOwners(String[] owners) {
         this.owners = owners;
     }
-    // Метод ускорения
+    // Метод для ускорения
     public void accelerate(double increment) {
         this.speed += increment;
-        System.out.println("Ускорение! Новая скорость: " + this.speed);
+        System.out.println("Ускорение. Новая скорость: " + this.speed + " км/ч");
     }
-    // Метод замедления
+    // Метод для замедления
     public void decelerate(double decrement) {
         this.speed -= decrement;
         if (this.speed < 0) {
-            this.speed = 0; // Скорость не может быть отрицательной
+            this.speed = 0;
         }
-        System.out.println("Замедление! Новая скорость: " + this.speed);
+        System.out.println("Замедление. Новая скорость: " + this.speed + " км/ч");
     }
-    // Метод расчета пройденного расстояния
+    // Метод для расчета пройденного расстояния
     public double calculateDistance(double time) {
-        return this.speed * time;
+        return speed * time; // расстояние = скорость * время
     }
     // Метод газ
     public void gas() {
         new Thread(() -> {
             try {
-                while (true) {
-                    System.out.println("Ускорение: " + speed + " м/с");
-                    Thread.sleep(1000); // Задержка в 1 секунду
+                for (int i = 0; i < 5; i++) { // Ускорение в течение 5 секунд
+                    accelerate(10); // Увеличиваем скорость на 10 км/ч каждую секунду
+                    Thread.sleep(1000); // Ждем 1 секунду
                 }
             } catch (InterruptedException e) {
-                Thread.currentThread().interrupt();
+                e.printStackTrace();
             }
         }).start();
     }
-    public static class Main {
-        public static void main(String[] args) {
-            String[] owners = {"Иван", "Петр"};
-            Vehicle vehicle = new Vehicle("Автомобиль", "Красный", 60.0, true, "Бензиновый", 25000.0, owners);
-            vehicle.accelerate(10); // Увеличиваем скорость
-            vehicle.decelerate(5); // Уменьшаем скорость
-            double distance = vehicle.calculateDistance(2); // Расчет расстояния за 2 часа
-            System.out.println("Пройденное расстояние: " + distance + " км");
-            vehicle.gas(); // Запуск метода газ
-        }
+    public static void main(String[] args) {
+        String[] owners = {"Иван", "Петр"};
+        Vehicle vehicle = new Vehicle("Автомобиль", "Красный", 60, true, "Бензиновый", 15000, owners);
+        System.out.println("Тип: " + vehicle.getType());
+        System.out.println("Цвет: " + vehicle.getColor());
+        System.out.println("Скорость: " + vehicle.getSpeed() + " км/ч");
+        vehicle.gas(); // Запуск метода газ
     }
 }
