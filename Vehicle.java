@@ -4,7 +4,7 @@ public class Vehicle {
     private String type; // тип транспортного средства
     private String color; // цвет
     private double speed; // скорость в км/ч
-    private boolean hasEngine; // есть ли двигатель
+    private static boolean hasEngine; // есть ли двигатель
     private String engineType; // тип двигателя
     private double price; // цена
     private String[] owners; // владельцы
@@ -100,7 +100,7 @@ public class Vehicle {
         System.out.println("Владелец: " + Arrays.toString(vehicle.getOwners()));
         System.out.println("Цена: " + vehicle.getPrice());
         System.out.println("Тип двигателя: " + vehicle.getEngineType());
-
+        System.out.println("Есть двигатель: " + (hasEngine ? "Да" : "Нет"));
         vehicle.gas(); // Запуск метода газ
     }
 }
