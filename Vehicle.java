@@ -91,26 +91,26 @@ public class Vehicle {
         return speed * time;
         // расстояние = скорость * время
     }
-    public double Distance(double time) {
-        this.time = time;
-        if (this.time == 0) {
-            System.out.println("ПРИЕХАЛИ! С вас 100 рублей");
-        }
-        return time;
-    }
     // Метод газ
     public void gas() {
-                for (int i = 0; i < 5; i++) { // Ускорение в течение 5 секунд
-                    accelerate(10); // Увеличиваем скорость на 10 км/ч каждую секунду
-                    Thread.onSpinWait(); // Ждем 1 секунду
-
-                }
+        for (int time = 0; true; time++) {
+            double d = distance(time);
+            System.out.println("Все еще едем, скорость "
+                    + this.speed + "\nРасстоояние " + d);
+            if (this.speed < 110) {
+                this.speed += 10;
+            }
+            if (d < 10000)
+                continue;
+            System.out.println("Прибыли! С вас 100 рублей");
+            break;
+        }
     }
 
     public static void main(String[] args) {
         String[] owners = {"Иван", "Петр"};
         Vehicle vehicle = new Vehicle("Автомобиль", "Красный", 60, true, "Бензиновый", 15000, owners);
-        System.out.printf("Тип: " + vehicle.getType() +" Цвет: " + vehicle.getColor() + " Скорость: " + vehicle.getSpeed() + " км/ч " +
+        System.out.println("Тип: " + vehicle.getType() +" Цвет: " + vehicle.getColor() + " Скорость: " + vehicle.getSpeed() + " км/ч " +
                 " Владелец: " + Arrays.toString(vehicle.getOwners()) + " Цена: " + vehicle.getPrice() +
                 " Тип двигателя: " + vehicle.getEngineType() + " Есть двигатель: " + (hasEngine ? "Да" : "Нет"));
         vehicle.gas(); // Запуск метода газ
