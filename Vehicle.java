@@ -1,6 +1,7 @@
 import java.util.Arrays;
 
 public class Vehicle {
+    private double distance; // дистанция
     private String type; // тип транспортного средства
     private String color; // цвет
     private double speed; // скорость в км/ч
@@ -8,6 +9,8 @@ public class Vehicle {
     private String engineType; // тип двигателя
     private double price; // цена
     private String[] owners; // владельцы
+    private double time;
+
     // Конструктор
     public Vehicle(String type, String color, double speed, boolean hasEngine, String engineType, double price, String[] owners) {
         this.type = type;
@@ -17,8 +20,15 @@ public class Vehicle {
         this.engineType = engineType;
         this.price = price;
         this.owners = owners;
+        this.distance = distance;
     }
     // Геттеры и сеттеры
+    public double getDistance() {
+        return distance;
+    }
+    public void setDistance(double distance) {
+        this.distance = distance;
+    }
     public String getType() {
         return type;
     }
@@ -74,17 +84,29 @@ public class Vehicle {
         }
         System.out.println("Замедление. Новая скорость: " + this.speed + " км/ч");
     }
+
     // Метод для расчета пройденного расстояния
-    public double calculateDistance(double time) {
-        return speed * time; // расстояние = скорость * время
+    public double distance(double time) {
+        this.time = time;
+        return speed * time;
+        // расстояние = скорость * время
+    }
+    public double Distance(double time) {
+        this.time = time;
+        if (this.time == 0) {
+            System.out.println("ПРИЕХАЛИ! С вас 100 рублей");
+        }
+        return time;
     }
     // Метод газ
     public void gas() {
                 for (int i = 0; i < 5; i++) { // Ускорение в течение 5 секунд
                     accelerate(10); // Увеличиваем скорость на 10 км/ч каждую секунду
                     Thread.onSpinWait(); // Ждем 1 секунду
+
                 }
     }
+
     public static void main(String[] args) {
         String[] owners = {"Иван", "Петр"};
         Vehicle vehicle = new Vehicle("Автомобиль", "Красный", 60, true, "Бензиновый", 15000, owners);
@@ -94,6 +116,6 @@ public class Vehicle {
         vehicle.gas(); // Запуск метода газ
     }
 }
-// конечная
+
 
 

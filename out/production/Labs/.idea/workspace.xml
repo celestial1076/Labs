@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="965d6129-6bcb-4fe7-94e0-02d618d0e778" name="Changes" comment="Другой код (финалище) 3 лабораторки">
+    <list default="true" id="965d6129-6bcb-4fe7-94e0-02d618d0e778" name="Changes" comment="Нормальный код (final) 3 лабораторки">
       <change beforePath="$PROJECT_DIR$/Vehicle.java" beforeDir="false" afterPath="$PROJECT_DIR$/Vehicle.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Labs/Vehicle.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Labs/Vehicle.class" afterDir="false" />
     </list>
@@ -145,6 +145,7 @@
       <workItem from="1727972193853" duration="50000" />
       <workItem from="1727972250895" duration="2505000" />
       <workItem from="1727985330634" duration="1786000" />
+      <workItem from="1727987144810" duration="5295000" />
     </task>
     <task id="LOCAL-00001" summary="dev1">
       <option name="closed" value="true" />
@@ -266,7 +267,31 @@
       <option name="project" value="LOCAL" />
       <updated>1727974734194</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="Нормальный код (final) 3 лабораторки">
+      <option name="closed" value="true" />
+      <created>1727988306677</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1727988306677</updated>
+    </task>
+    <task id="LOCAL-00017" summary="Нормальный код (final) 3 лабораторки">
+      <option name="closed" value="true" />
+      <created>1727988316996</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1727988316996</updated>
+    </task>
+    <task id="LOCAL-00018" summary="Нормальный код (final) 3 лабораторки">
+      <option name="closed" value="true" />
+      <created>1727988406467</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1727988406467</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -293,7 +318,8 @@
     <MESSAGE value="Другой код 3 лабораторки" />
     <MESSAGE value="Другой код (2)3 лабораторки" />
     <MESSAGE value="Другой код (финалище) 3 лабораторки" />
-    <option name="LAST_COMMIT_MESSAGE" value="Другой код (финалище) 3 лабораторки" />
+    <MESSAGE value="Нормальный код (final) 3 лабораторки" />
+    <option name="LAST_COMMIT_MESSAGE" value="Нормальный код (final) 3 лабораторки" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
