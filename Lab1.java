@@ -23,3 +23,4 @@ public class Lab1 {
         System.out.println("Факториал числа " + number + " равен: " + CalculateFactorial(number));
     }
 }
+// Сдано

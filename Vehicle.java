@@ -96,7 +96,7 @@ public class Vehicle {
         for (int time = 0; true; time++) {
             double d = distance(time);
             System.out.println("Все еще едем, скорость "
-                    + this.speed + "\nРасстоояние " + d);
+                    + this.speed + "\n\nРасстояние " + d);
             if (this.speed < 110) {
                 this.speed += 10;
             }
@@ -110,9 +110,9 @@ public class Vehicle {
     public static void main(String[] args) {
         String[] owners = {"Иван", "Петр"};
         Vehicle vehicle = new Vehicle("Автомобиль", "Красный", 60, true, "Бензиновый", 15000, owners);
-        System.out.println("Тип: " + vehicle.getType() +" Цвет: " + vehicle.getColor() + " Скорость: " + vehicle.getSpeed() + " км/ч " +
-                " Владелец: " + Arrays.toString(vehicle.getOwners()) + " Цена: " + vehicle.getPrice() +
-                " Тип двигателя: " + vehicle.getEngineType() + " Есть двигатель: " + (hasEngine ? "Да" : "Нет"));
+        System.out.println("Тип: " + vehicle.getType() +" \nЦвет: " + vehicle.getColor() + " \nСкорость: " + vehicle.getSpeed() + " км/ч " +
+                " \nВладелец: " + Arrays.toString(vehicle.getOwners()) + " \nЦена: " + vehicle.getPrice() +
+                " \nТип двигателя: " + vehicle.getEngineType() + " \nЕсть двигатель: " + (hasEngine ? "Да" : "Нет"));
         vehicle.gas(); // Запуск метода газ
     }
 }
